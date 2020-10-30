@@ -1,0 +1,50 @@
+div, ul, ol, dl, p, pre, section, article, aside, li, nav, input, textarea {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  margin: 0;
+}
+a{
+  text-decoration:none;
+}
+#tabbar{
+  padding:2px 1px;
+}
+.font{
+  font-size: 14px;
+  color: #808080;
+  font-family: 黑体;
+}
+.mint-tabbar>.mint-tab-item.is-selected{
+    color: #ff734c;
+}
+span{
+  display: inline-block;
+}
+.home-title-item3 span,
+.home-title-item1 span{
+  margin-top: 12px;
+  margin-top: 12px;
+  width: 24px;
+  height:24px;
+}
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+img{
+  width: 100%;
+  vertical-align: middle;
+}
+.sene-item_span2,.sene-item_span{
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 99;
+  font-size: 16px;
+}

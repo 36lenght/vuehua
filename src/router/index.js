@@ -1,10 +1,29 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import My from '../views/my.vue'
+import Cart from '../views/cart.vue'
+import Caidan from '../views/caidan.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/my',
+    name: 'my',
+    component: My
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: Cart
+  },
+  {
+    path: '/caidan',
+    name: 'caidan',
+    component: Caidan
+  },
+  
   {
     path: '/',
     name: 'Home',

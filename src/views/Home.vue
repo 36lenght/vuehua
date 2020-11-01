@@ -80,7 +80,41 @@
         </div>
       </div>
       <!-- 一秒选花end -->
-    
+
+      <!-- 热销榜，特价专区 -->
+      <div class="scene">
+        <div class="scene-list1 scene-list">
+          <a href="javascript:;">
+            <p class="scene-list-name">热销榜</p>
+            <p class="scene-list-desc">集万千宠爱</p>
+            <div class="scene-list-div">
+              <span class="scene-list-div-span1">大家都在买</span>
+              <span class="scene-list-div-span2">热销22.1万</span>
+            </div>
+          </a>
+        </div>
+        <div class="scene-list2 scene-list">
+          <a href="javascript:;">
+            <p class="scene-list-name">特价专区</p>
+            <p class="scene-list-desc">超值好货</p>
+            <div class="scene-list-div">
+              <span class="scene-list-div-span1">限时降价</span>
+              <span class="scene-list-div-span2">
+                ￥158
+                <s style="color:#71797f">￥186</s>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- 热销榜，特价专区end -->
+
+      <!-- Product Flower -->
+      <div>
+        <div></div>
+        <div></div>
+      </div>
+      <!-- Product Flower end -->
     
 
     <!-- 底部导航 -->
@@ -127,8 +161,15 @@ export default {
         companys:companys,
         classifications:classifications,
         seneImages : seneImages,
-        seneImages2 : seneImages2
+        seneImages2 : seneImages2,
+        category:[]
       }
+    },
+    mounted(){
+      this.axios.get('/category').then(res=>{
+        // 接收服务器返回的数据并赋值属性category
+        this.category = res.data.results
+      })
     },
     methods:{
       cancel(){
@@ -144,6 +185,50 @@ export default {
 }
 </script>
 <style scoped>
+.scene-list-div-span2{
+  font-size: 0.71rem;
+  color: #333;
+}
+.scene-list-div-span1{
+  border-radius: 1rem;
+  background-color: #ff734c;
+  color: #fff;
+  width: 70px;
+  text-align: center;
+}
+.scene-list-div>span{
+  display: block;
+}
+.scene-list-div{
+  width:160px ;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 5px;
+  font-size: 10px;
+}
+.scene-list-name{
+  font-size: 14px;
+  color: #333;
+}
+.scene-list-desc{
+  font-size: 12px;
+  margin-top: 3px;
+  color: #71797f;
+}
+.scene-list2{
+  background: url('https://img02.hua.com/m/home/img/m_home_special2.png') no-repeat center;
+  background-size: 180px 150px;
+}
+.scene-list1{
+  background: url('https://img02.hua.com/m/home/img/m_home_ranklist2.png') no-repeat;
+  background-size: 180px 150px;
+}
+.scene{
+  margin-top: 10px;
+  padding:0 6px;
+  display: flex;
+}
 .sene-item_span2{
   top: 12px;
   color: #333;

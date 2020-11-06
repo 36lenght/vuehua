@@ -110,9 +110,38 @@
       <!-- 热销榜，特价专区end -->
 
       <!-- Product Flower -->
-      <div>
-        <div></div>
-        <div></div>
+      <div class="product" v-for="(value,i) of txt" :key="i">
+        <h3>{{value.txt}}</h3>
+        <div class="product-list">
+          <div class="product-item" v-for="(value,i) of acticle" :key="i">
+            <a href="javascript:;" class="product-item-a">
+              <div class="product-item-pic">
+                <img referrerpolicy="no-referrer" :src="value.imag" alt="">
+              </div>
+              <div class="product-item-info">
+                <p class="product-item-info-name">{{value.sub}}</p>
+                <p class="product-item-info-desc">{{value.descri}}</p>
+                <div class="product-item-info-tags">
+                  <span class="tags-promo">{{value.tagpromo}}</span>
+                </div>
+                <div class="product-item-info-promo">{{value.infopromo}}</div>
+                <div class="product-item-info-bottom">
+                  <div class="product-item-info-bottom-left">
+                    <p class="product-item-info-prices">
+                      <span>￥{{value.lastprice}}</span>
+                      <s>￥{{value.price}}</s>
+                    </p>
+                    <p class="product-item-info-sales">已销售7.3万件</p>
+                  </div>
+                  <div class="product-item-info-bottom-right">
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="product-more"></div>
       </div>
       <!-- Product Flower end -->
     
@@ -162,14 +191,21 @@ export default {
         classifications:classifications,
         seneImages : seneImages,
         seneImages2 : seneImages2,
-        category:[]
+        txt:[],
+        acticle:[]
       }
     },
     mounted(){
-      this.axios.get('/category').then(res=>{
+      this.axios.get('/txt').then(res=>{
         // 接收服务器返回的数据并赋值属性category
-        this.category = res.data.results
-      })
+        this.txt = res.data.results
+        console.log(res.data.results)
+      });
+      this.axios.get('/acticle').then(res=>{
+        // 接收服务器返回的数据并赋值属性category
+        this.acticle = res.data.results
+        console.log(res.data.results)
+      });
     },
     methods:{
       cancel(){
@@ -185,6 +221,80 @@ export default {
 }
 </script>
 <style scoped>
+.product-item-info-bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product-item-info-bottom-right>span{
+  width: 20px;
+  height: 20px;
+  background:url("../../image/tubiao/cart2.png") no-repeat center;
+}
+.product-item-info-sales{
+  font-size: 0.71428571rem;
+  color: #71797F;
+}
+.product-item-info-prices>s{
+  font-size: 0.71428571rem;
+  color: #71797F;
+  margin-left: 0.42857143rem
+}
+.product-item-info-prices>span{
+  color: #ff734c;
+  font-size: 18px;
+  font-weight: 500px;
+}
+.product-item-info-promo{
+  padding: 10px 0 ;
+  margin-top: 12px;
+  font-size: 12px;
+  border-top: 1px solid #e9ecf0;
+  border-bottom: 1px solid #e9ecf0;
+  color: #232628;
+}
+.tags-promo{
+  background-color: #ff734c;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 10rem;
+  padding: 0 0.28rem;
+  margin-top: 6px;
+}
+.product-item-info-desc{
+  color: #71797f;
+  font-size: 12px;
+}
+.product-item-info{
+  width: 180px;
+  padding: 0 20px;
+}
+.product-item-info-desc{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.product-list{
+  width: 375px;
+  padding: 0 5px;
+}
+.product-item-info-name{
+  font-size: 16px;
+  color: #71797f;
+  padding-top: 18px;
+}
+.product-item-pic>img{
+  width: 170px;
+}
+.product-item-a{
+  display: flex;
+}
+.product>h3{
+  text-align: center;
+  font-size:  1.14285714rem;
+  font-family: 黑体;
+  color: #333;
+}
 .scene-list-div-span2{
   font-size: 0.71rem;
   color: #333;
